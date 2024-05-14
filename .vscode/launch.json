@@ -1,0 +1,13 @@
+{
+  "type": "chrome",
+  "request": "launch",
+  "name": "调试 Vue 项目",
+  "runtimeExecutable": "canary",
+  "runtimeArgs": [
+      "--auto-open-devtools-for-tabs",
+  ],
+  "userDataDir": false,
+  "webRoot": "${workspaceFolder}/code/vue3/vue-demo",
+
+  "url": "http://localhost:8080"
+}
