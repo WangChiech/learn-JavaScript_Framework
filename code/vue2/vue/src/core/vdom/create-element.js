@@ -54,6 +54,7 @@ export function _createElement (
   children?: any,
   normalizationType?: number
 ): VNode | Array<VNode> {
+  debugger
   // 对data做校验，不能是响应式的
   if (isDef(data) && isDef((data: any).__ob__)) {
     process.env.NODE_ENV !== 'production' && warn(
@@ -165,13 +166,3 @@ function registerDeepBindings (data) {
     traverse(data.class)
   }
 }
-
-// foo()
-// var foo
-// foo = function () {
-//   console.log(2)
-// }
-// function foo() {
-//   console.log(1)
-// }
-// foo()

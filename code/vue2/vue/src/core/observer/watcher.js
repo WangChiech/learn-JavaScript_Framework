@@ -165,6 +165,7 @@ export default class Watcher {
    * Will be called when a dependency changes.
    */
   update () {
+    console.log(this)
     /* istanbul ignore else */
     if (this.computed) {
       // A computed property watcher has two modes: lazy and activated.
