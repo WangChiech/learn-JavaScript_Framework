@@ -1,0 +1,106 @@
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  const template = '<div><p>str1</p><p>str2</p></div>'
+  const tokenize = (str) => {
+    const tokens = []
+    const chars = []
+    const state = {
+      initial: 1,
+      startOpen: 2,
+      startTagName: 3,
+      endTagName: 4,
+      text: 5
+    }
+    let currentState = 1
+    while (str.length) {
+      const char = str[0]
+      switch (currentState) {
+        case state.initial:
+          if (char === '<') {
+            currentState = state.startOpen
+          } else {
+            currentState = state.text
+            chars.push(char)
+          }
+          break
+        case state.startOpen:
+          if (char === '/') {
+            currentState = state.endTagName
+          } else {
+            chars.push(char)
+            currentState = state.startTagName
+          }
+          break
+        case state.startTagName:
+          if (char === '>') {
+            currentState = state.initial
+            tokens.push({ type: 'tag', name: chars.join('') })
+            chars.length = 0
+          } else {
+            chars.push(char)
+          }
+          break
+        case state.text:
+          if (char === '<') {
+            currentState = state.startOpen
+            tokens.push({ type: 'text', content: chars.join('') })
+            chars.length = 0
+          } else {
+            chars.push(char)
+          }
+          break
+        case state.endTagName:
+          if (char === '>') {
+            currentState = state.initial
+            tokens.push({ type: 'endTag', name: chars.join('') })
+            chars.length = 0
+          } else {
+            chars.push(char)
+          }
+          break
+      }
+      str = str.slice(1)
+    }
+    return tokens
+  }
+  console.log(tokenize(template))
+  const parse = (tokens) => {
+    const root = {
+      type: 'Root',
+      children: []
+    }
+    const elementStack = [root]
+    let parent = root
+    while (tokens.length) {
+      const currentToken = tokens[0]
+      switch (currentToken.type) {
+        case 'tag':
+          const eleNode = {
+            type: 'Element',
+            tag: currentToken.name,
+            children: []
+          }
+          elementStack.push(eleNode)
+          parent.children.push(eleNode)
+          parent = eleNode
+          break
+        case 'text':
+          const textNode = {
+            type: 'Text',
+            content: currentToken.content
+          }
+          parent.children.push(textNode)
+          break
+        case 'endTag':
+          elementStack.pop()
+          parent = elementStack[elementStack.length - 1]
+          break
+      }
+      tokens.shift()
+    }
+    return root
+  }
+  console.log(parse(tokenize(template)))
+</script>

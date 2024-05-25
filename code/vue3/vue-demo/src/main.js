@@ -1,9 +1,8 @@
-
-import * as VueM from 'vue'
+import * as Vue from 'vue'
 import App from './App.vue'
-console.dir(VueM)
-console.dir(VueM.createApp)
-console.dir(App)
 
+console.log(App)
 
-VueM.createApp(App).mount('#app')
+const app = Vue.createApp(App)
+console.log(app)
+app.mount('#app')

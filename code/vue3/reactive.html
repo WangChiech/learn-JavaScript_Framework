@@ -1,0 +1,101 @@
+<body>
+  <input id="inputBox" value="inputBox"/>
+</body>
+<script>
+  console.log('--', inputBox.value)
+  document.body.addEventListener('click', () => {
+    console.log('body click')
+    Promise.resolve('body resolve').then(console.log)
+  })
+  inputBox.addEventListener('click', (e) => {
+    console.log('input click')
+    inputBox.value = '+++++++'
+    const box = document.createElement('div')
+    box.style.width = '100px'
+    box.style.height = '100px'
+    box.style.backgroundColor = 'red'
+    document.body.appendChild(box)
+    document.body.style.backgroundColor = 'pink'
+    Promise.resolve('input resolve').then(val => {
+      console.log(val)
+      debugger
+    })
+  })
+  const originData = {
+    ok: true,
+    msg: 'hello',
+    fn1: 1,
+    fn2: 1
+  }
+  const data = new Proxy(originData, {
+    get(target, key) {
+      const effects = bucket.get(key)
+      const effect = effectRegistor.effectStack[effectRegistor.effectStack.length - 1]
+      if (effect && effects) {
+        effects.add(effect)
+        effect.effectDepsList.push(effects)
+        console.log('data getter', '--', key, '--', bucket)
+      }
+      return target[key]
+    },
+    set(target, key, newVal) {
+      target[key] = newVal
+      const effects = bucket.get(key)
+      if (effects) {
+        const effectsToRun = new Set(effects)
+        effectsToRun.forEach(effect => effect())
+        console.log('data setter', '--', key, '--', bucket)
+      }
+      return true
+    }
+  })
+  
+  const bucket = new Map()
+  for (const key in data) {
+    bucket.set(key, new Set())
+  }
+
+  function fn() {
+    document.body.innerHTML = data.ok ? data.msg : 'ok false'
+    effectRegistor(function fn2() {
+      console.log('++++fn2++++', data.fn2)
+    })
+    console.log('++++fn1++++', data.fn1)
+  }
+
+  // effect()
+
+  function effectRegistor(effect) {
+    const wrapEffect = () => {
+      if (wrapEffect.effectDepsList.length) {
+        wrapEffect.effectDepsList.forEach(deps => {
+          deps.delete(wrapEffect)
+        })
+        wrapEffect.effectDepsList.length = 0
+      }
+      console.log('----', wrapEffect.effectDepsList)
+      effectRegistor.effectStack.push(wrapEffect)
+      effect()
+      effectRegistor.effectStack.pop()
+    }
+    wrapEffect.effectDepsList = []
+    wrapEffect()
+  }
+  effectRegistor.effectStack = []
+  
+  // effectRegistor(fn)
+  
+  // setTimeout(() => {
+  //   // debugger
+  //   data.msg = 'changed'
+  //   data.ok = false
+  // })
+
+  // setTimeout(() => {
+  //   data.ok = true
+  // },2000)
+
+  setTimeout(() => {
+    data.fn2  = 2
+  },5000)
+</script>
