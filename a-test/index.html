@@ -1,0 +1,31 @@
+<script type="module">
+  // import { sum } from './index.js'
+  // console.log(sum())
+
+  // function fn (a = 'params a', f = () => {
+  //   debugger
+  //   console.log('params f', a)
+  // }) {
+  //   const c = 'cc'
+  //   var a = 2 // v
+  //   debugger
+  //   // const f = 'f' // x
+  //   // function f() {} // v
+  //   // var f = 'f' // v
+  //   f()
+  // }
+
+  function fn (a, f) {
+    const c = 'cc'
+    var a = 2 // v
+    debugger
+    // const f = 'f' // x
+    // function f() {} // v
+    // var f = 'f' // v
+    f()
+  }
+  fn('params a', () => {
+    debugger
+    console.log('params f', a)
+  })
+</script>

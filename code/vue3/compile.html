@@ -103,4 +103,25 @@
     return root
   }
   console.log(parse(tokenize(template)))
+  const transform = (ast) => {
+    const context = {
+      nodeTransforms: []
+    }
+    const traverseNode = (ast) => {
+      context.currentNode = ast
+      const children = context.currentNode.children
+      const nodeTransforms = []
+      context.nodeTransforms.forEach(item => {
+        nodeTransfroms.push(item(context.currentNode))
+        if (!context.currentNode) return
+      })
+      if (children.length) {
+        children.forEach(item => {
+          traverseNode(item)
+        })
+      }
+      while(nodeTransforms.length) nodeTransforms.pop()()
+    }
+    return ast
+  }
 </script>

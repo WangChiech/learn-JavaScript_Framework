@@ -17,6 +17,7 @@ export function initMixin (Vue: Class<Component>) {
     const vm: Component = this
     // a uid
     vm._uid = uid++
+    debugger
 
     let startTag, endTag
     /* istanbul ignore if */

@@ -1,41 +1,27 @@
 <template>
-  <ListItem>11</ListItem>
-  <!-- <KeepAlive>
-    <ListItem nameId="1" v-if="act === 1">
-      <h1>11</h1>
-      <h2>22</h2>
-    </ListItem>
-    <ListItem nameId="2" v-else-if="act ===2">
-      <h1>11</h1>
-    </ListItem>
-    <ListItem nameId="3" v-else>
-      <h1>11</h1>
-    </ListItem>
-  </KeepAlive> -->
+  <div id="appId" ref="appRef">
+    <ListItem id="listId" ref="listRef" list="listattr"></ListItem>
+    <OptionItem id="optionId" ref="optionRef" option="option"></OptionItem>
+    <div>
+      <button @click="consoleRef">ref</button>
+      <button @click="consoleApp">AppIns</button>
+    </div>
+  </div>
 </template>
-
 <script setup>
-// import { ref } from 'vue'
-import ListItem from './ListItem.vue'
-// console.log(ListItem)
-// const act = ref(1)
-// document.body.onclick = function () {
-//   console.log('body click', act.value)
-//   if (act.value > 0 && act.value < 3) {
-//     act.value++
-//   } else {
-//     act.value--
-//   }
-// }
-</script>
+import { ref } from 'vue';
+import ListItem from './ListItem.vue';
+import OptionItem from './OptionItem.vue';
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+const listRef = ref()
+const optionRef = ref()
+const appRef = ref()
+
+const consoleRef = () => {
+  console.log('listRef', listRef.value, Reflect.ownKeys(listRef.value))
+  console.log('optionRef', optionRef.value, Reflect.ownKeys(optionRef.value))
 }
-</style>
+const consoleApp = () => {
+  console.log('appIns', appRef, appRef.value.__vueParentComponent)
+}
+</script>
