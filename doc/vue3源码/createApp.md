@@ -1,3 +1,5 @@
+#
+```ts
 const createApp = (...args) => {
   const app = ensureRenderer().createApp(...args);
   if (!!(process.env.NODE_ENV !== "production")) {
@@ -6,7 +8,7 @@ const createApp = (...args) => {
   }
   const { mount } = app;
   app.mount = (containerOrSelector) => {
-    const container = normalizeContainer(containerOrSelector);
+      const container = normalizeContainer(containerOrSelector);
     if (!container)
       return;
     const component = app._component;
@@ -23,3 +25,4 @@ const createApp = (...args) => {
   };
   return app;
 };
+```

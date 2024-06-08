@@ -1,3 +1,5 @@
+#
+```ts
 function baseCreateRenderer(
   options: RendererOptions,
   createHydrationFns?: typeof createHydrationFunctions,
@@ -299,3 +301,4 @@ function baseCreateRenderer(
     createApp: createAppAPI(render, hydrate),
   }
 }
+```
