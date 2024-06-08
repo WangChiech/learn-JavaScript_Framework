@@ -137,3 +137,5 @@ function createAppAPI<HostElement>(
   }
 }
 ```
+
+### [createAppContext](./createAppContext.md)
