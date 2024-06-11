@@ -139,3 +139,5 @@ function createAppAPI<HostElement>(
 ```
 
 ### [createAppContext](./createAppContext.md)
+
+### [render__baseCreateRenderer](./render__baseCreateRenderer.md)

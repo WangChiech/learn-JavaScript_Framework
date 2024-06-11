@@ -1,7 +1,7 @@
-import * as Vue from 'vue'
+import * as Vue from '../../core/packages/vue/dist/vue.runtime.esm-bundler'
 import App from './App.vue'
 
-
+debugger
 
 const app = Vue.createApp(App)
 console.log('app', app)
