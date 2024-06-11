@@ -1,5 +1,13 @@
 #
-
+```ts
+type UnmountFn = (
+  vnode: VNode,
+  parentComponent: ComponentInternalInstance | null,
+  parentSuspense: SuspenseBoundary | null,
+  doRemove?: boolean,
+  optimized?: boolean,
+) => void
+```
 ```ts
 const unmount: UnmountFn = (
   vnode,

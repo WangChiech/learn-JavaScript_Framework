@@ -1,5 +1,17 @@
 #
-
+```ts
+type PatchFn = (
+  n1: VNode | null, // null means this is a mount
+  n2: VNode,
+  container: RendererElement,
+  anchor?: RendererNode | null,
+  parentComponent?: ComponentInternalInstance | null,
+  parentSuspense?: SuspenseBoundary | null,
+  namespace?: ElementNamespace,
+  slotScopeIds?: string[] | null,
+  optimized?: boolean,
+) => void
+```
 ```ts
 const patch: PatchFn = (
   n1,
@@ -118,3 +130,9 @@ const patch: PatchFn = (
   }
 };
 ```
+
+### [unmount__baseCreateRenderer](./unmount__baseCreateRenderer.md)
+### [processText__baseCreateRenderer](./processText__baseCreateRenderer.md)
+### [mountStaticNode__baseCreateRenderer](./mountStaticNode__baseCreateRenderer.md)
+### [processElement__baseCreateRenderer](./processElement__baseCreateRenderer.md)
+### [processComponent__baseCreateRenderer](./processComponent__baseCreateRenderer.md)

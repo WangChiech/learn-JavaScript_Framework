@@ -1,6 +1,17 @@
 #
 
 ```ts
+type RootRenderFunction<HostElement = RendererElement> = (
+  vnode: VNode | null,
+  container: HostElement,
+  namespace?: ElementNamespace,
+) => void
+interface RendererElement extends RendererNode {}
+interface RendererNode {
+  [key: string]: any
+}
+```
+```ts
 const render: RootRenderFunction = (vnode, container, namespace) => {
   if (vnode == null) {
     if (container._vnode) {
