@@ -42,3 +42,6 @@ const processElement = (
   }
 };
 ```
+
+### [mountElement__baseCreateRenderer](./mountElement__baseCreateRenderer.md)
+### [patchElement]
