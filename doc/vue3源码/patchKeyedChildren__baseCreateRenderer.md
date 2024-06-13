@@ -145,6 +145,7 @@ const patchKeyedChildren = (
     // matching nodes & remove nodes that are no longer present
     let j;
     let patched = 0;
+    // 新的一组子节点在预处理之后剩余未处理节点的数量
     const toBePatched = e2 - s2 + 1;
     let moved = false;
     // used to track whether any node has moved
@@ -242,3 +243,5 @@ const patchKeyedChildren = (
   }
 };
 ```
+
+### [getSequence_renderer](./getSequence_renderer.md)
