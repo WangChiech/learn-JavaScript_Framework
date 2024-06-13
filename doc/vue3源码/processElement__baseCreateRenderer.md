@@ -44,4 +44,4 @@ const processElement = (
 ```
 
 ### [mountElement__baseCreateRenderer](./mountElement__baseCreateRenderer.md)
-### [patchElement]
+### [patchElement__baseCreateRenderer](./patchElement__baseCreateRenderer.md)
