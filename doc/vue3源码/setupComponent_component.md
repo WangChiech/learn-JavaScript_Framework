@@ -25,3 +25,4 @@ function isStatefulComponent(instance: ComponentInternalInstance) {
 
 ### [initProps_componentProps](./initProps_componentProps.md)
 ### [initSlots_componentSlots](./initSlots_componentSlots.md)
+### [setupStatefulComponent_component](./setupStatefulComponent_component.md)

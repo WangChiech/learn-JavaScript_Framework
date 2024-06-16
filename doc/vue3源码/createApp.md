@@ -31,8 +31,22 @@ const createApp = (...args) => {
   return app;
 };
 ```
-### [createAppAPI -> app](./createAppAPI.md)
-
+## ensureRenderer
+```ts
+function ensureRenderer() {
+  // return { render, hydrate, createApp }
+  return renderer || (renderer = createRenderer(rendererOptions));
+}
+```
+## createRenderer
+```ts
+function createRenderer<
+  HostNode = RendererNode,
+  HostElement = RendererElement,
+>(options: RendererOptions<HostNode, HostElement>) {
+  return baseCreateRenderer<HostNode, HostElement>(options)
+}
+```
 ## normalizeContainer
 ```ts
 function normalizeContainer(container) {
@@ -43,3 +57,4 @@ function normalizeContainer(container) {
   return container;
 }
 ```
+### [createAppAPI -> app](./createAppAPI.md)
