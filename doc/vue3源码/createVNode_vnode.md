@@ -121,3 +121,5 @@ function _createVNode(
   )
 }
 ```
+
+### [createBaseVNode_vnode](./createBaseVNode_vnode.md)
