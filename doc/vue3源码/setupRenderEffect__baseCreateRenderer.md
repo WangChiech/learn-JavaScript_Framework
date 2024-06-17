@@ -31,6 +31,8 @@ const setupRenderEffect: SetupRenderEffectFn = (
       }
       toggleRecurse(instance, true);
 
+      const subTree = (instance.subTree = renderComponentRoot(instance))
+
       patch(
         null,
         subTree,
@@ -153,3 +155,5 @@ const setupRenderEffect: SetupRenderEffectFn = (
   update();
 };
 ```
+
+### [renderComponentRoot_componentRenderUtils](./renderComponentRoot_componentRenderUtils.md)
