@@ -38,3 +38,5 @@ const processComponent = (
   }
 };
 ```
+
+### [mountComponent__baseCreateRenderer](./mountComponent__baseCreateRenderer.md)

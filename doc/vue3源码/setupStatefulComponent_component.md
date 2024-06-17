@@ -45,26 +45,7 @@ function setupStatefulComponent(
           .catch(e => {
             handleError(e, instance, ErrorCodes.SETUP_FUNCTION)
           })
-      } else if (__FEATURE_SUSPENSE__) {
-        // async setup returned Promise.
-        // bail here and wait for re-entry.
-        instance.asyncDep = setupResult
-        if (__DEV__ && !instance.suspense) {
-          const name = Component.name ?? 'Anonymous'
-          warn(
-            `Component <${name}>: setup function returned a promise, but no ` +
-              `<Suspense> boundary was found in the parent component tree. ` +
-              `A component with async setup() must be nested in a <Suspense> ` +
-              `in order to be rendered.`,
-          )
-        }
-      } else if (__DEV__) {
-        warn(
-          `setup() returned a Promise, but the version of Vue you are using ` +
-            `does not support it yet.`,
-        )
-      }
-    } else {
+      } else {
       handleSetupResult(instance, setupResult, isSSR)
     }
   } else {
@@ -72,3 +53,6 @@ function setupStatefulComponent(
   }
 }
 ```
+
+### [handleSetupResult_component](./handleSetupResult_component.md)
+### [finishComponentSetup_component](./finishComponentSetup_component.md)
