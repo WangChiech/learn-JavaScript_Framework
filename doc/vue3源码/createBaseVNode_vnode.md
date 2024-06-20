@@ -1,5 +1,7 @@
 #
 ```ts
+export { createBaseVNode as createElementVNode }
+
 function createBaseVNode(
   type: VNodeTypes | ClassComponent | typeof NULL_DYNAMIC_COMPONENT,
   props: (Data & VNodeProps) | null = null,

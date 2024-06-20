@@ -2,7 +2,9 @@
   <div id="appId" ref="appRef">
     <SubApp :msg></SubApp>
     <div class="btn">
-      <button @click="msg.val++">msg++</button>
+      {{msg.val}}
+      <!-- <button @keyup.enter="msg.val++">msg++</button> -->
+      <input @keyup.enter="msg.val++"/>
     </div>
   </div>
 </template>
