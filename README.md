@@ -10,6 +10,8 @@
 
 [组件](./doc/组件.md)
 
+[指令](./doc/指令.md)
+
 [VirtualDOM](./doc/VirtualDOM.md)
 
 [keyboard shortcuts](./doc/keyboardShortcuts.md)

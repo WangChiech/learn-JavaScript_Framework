@@ -49,7 +49,7 @@ function renderComponentRoot(
         /* function render(_ctx, _cache, $props, $setup, $data, $options) {} */
         render!.call(
           thisProxy,
-          proxyToUse!,
+          proxyToUse!, // withProxy || proxy
           renderCache,
           __DEV__ ? shallowReadonly(props) : props,
           setupState,
