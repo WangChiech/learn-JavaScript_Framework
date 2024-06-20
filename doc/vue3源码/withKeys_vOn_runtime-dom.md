@@ -35,3 +35,5 @@ const keyNames: Record<string, string | string[]> = {
   delete: 'backspace',
 }
 ```
+
+### [patchEvent_events](./patchEvent_events.md)
