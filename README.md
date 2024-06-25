@@ -12,6 +12,8 @@
 
 [指令](./doc/指令.md)
 
+[编译器-parser](./doc/编译器-parser.md)
+
 [VirtualDOM](./doc/VirtualDOM.md)
 
 [keyboard shortcuts](./doc/keyboardShortcuts.md)
